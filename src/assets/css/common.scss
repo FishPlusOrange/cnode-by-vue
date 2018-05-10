@@ -1,0 +1,74 @@
+/* Markdown */
+.markdown-text {
+  font-size: 14px;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 30px 0 15px;
+  }
+  p {
+    line-height: 1.7em;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 15px 0
+  }
+  a {
+    color: #08c;
+    text-decoration: none;
+  }
+  ol,
+  ul {
+    padding: 0;
+    margin: 0 0 10px 25px
+  }
+  li {
+    line-height: 2em;
+  }
+  blockquote {
+    padding: 0 0 0 15px;
+    margin: 0 0 20px;
+    border-left: 5px solid #eee
+  }
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 15px;
+  }
+}
+/* Transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition: .3s ease;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(-125px);
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: .3s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(15px);
+  opacity: 0;
+}
+.pop-enter-active,
+.pop-leave-active {
+  transition: .3s ease;
+}
+.pop-enter,
+.pop-leave-to {
+  transform: translateY(125px);
+  opacity: 0;
+}
