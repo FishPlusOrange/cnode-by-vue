@@ -27,12 +27,12 @@
         <li v-for="(reply, index) of topicContent.replies" class="reply-cell">
           <div class="info-wrapper reply">
             <div class="info">
-              <div class="user">
+              <router-link class="user" :to="{name: 'userInfo', params: {loginname: reply.author.loginname}}">
                 <div class="avatar">
                   <img :src="reply.author.avatar_url">
                 </div>
                 <span>{{ reply.author.loginname }}</span>
-              </div>
+              </router-link>
               <span>{{ reply.create_at | dateFormat }}</span>
               <span>{{ index + 1 }}楼</span>
             </div>
@@ -328,7 +328,6 @@ $primary-size: 20px;
       .user {
         display: flex;
         align-items: center;
-        color: $text-color;
         .avatar {
           @include rounded-avatar($primary-size);
         }
