@@ -22,7 +22,7 @@
                 <div class="date">{{ msg.reply.create_at | dateFormat }}</div>
               </div>
               <div class="content" v-html="msg.reply.content"></div>
-              <div class="topic">主题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="markSingleRead(msg.id)">{{ msg.topic.title }}</router-link></div>
+              <div class="topic">话题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="markSingleRead(msg.id)">{{ msg.topic.title }}</router-link></div>
             </li>
           </ul>
           <span class="no-data" v-show="!msgs.hasnot_read_messages.length">暂无消息</span>
@@ -40,7 +40,7 @@
                 <div class="date">{{ msg.reply.create_at | dateFormat }}</div>
               </div>
               <div class="content" v-html="msg.reply.content"></div>
-              <div class="topic">主题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="hideAll">{{ msg.topic.title }}</router-link></div>
+              <div class="topic">话题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="hideAll">{{ msg.topic.title }}</router-link></div>
             </li>
           </ul>
           <span class="no-data" v-if="!msgs.has_read_messages.length">暂无消息</span>

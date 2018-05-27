@@ -82,7 +82,7 @@ export default {
   created() {
     this.getTopicContent();
   },
-  beforeRouteUpdate(to, from, next) { // 响应路由参数的变化 获取对应主题内容
+  beforeRouteUpdate(to, from, next) { // 响应路由参数的变化 获取对应话题内容
     next();
     this.id = this.$route.params.id;
     this.getTopicContent();
@@ -99,7 +99,7 @@ export default {
     }
   },
   methods: {
-    // 获取主题内容
+    // 获取话题内容
     getTopicContent() {
       this.$store.commit('toggleBack', {isShowBack: true}); // 显示返回按钮
       this.$indicator.open({
@@ -226,7 +226,7 @@ export default {
       })
         .then(response => {
           if(response.data.success) {
-            this.getTopicContent(); // 重新获取主题内容
+            this.getTopicContent(); // 重新获取话题内容
           }
         })
         .then(() => {

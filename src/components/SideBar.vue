@@ -9,7 +9,7 @@
             </mt-cell>
           </div>
           <div @click="showNewTopic">
-            <mt-cell title="新建主题" is-link></mt-cell>
+            <mt-cell title="新建话题" is-link></mt-cell>
           </div>
           <div @click="showUserCollection">
             <mt-cell title="我的收藏" is-link></mt-cell>
@@ -86,7 +86,7 @@ export default {
       }
       this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
     },
-    // 显示新建主题界面
+    // 显示新建话题界面
     showNewTopic() {
       if(!this.accessToken) {
         this.$store.commit('toggleUserLogin', {isShowUserLogin: true});

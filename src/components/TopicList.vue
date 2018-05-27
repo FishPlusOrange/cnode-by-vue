@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    // 获取主题
+    // 获取话题
     getTopics() {
       this.$indicator.open({
         spinnerType: 'double-bounce'
@@ -73,10 +73,10 @@ export default {
           this.$indicator.close();
         });
     },
-    // 获取更多主题
+    // 获取更多话题
     getMoreTopics() {
-      this.isShowSpinner = true; // 显示获取更多主题的加载动画
-      this.loading = true; // 获取更多主题过程中无限滚动不会被触发
+      this.isShowSpinner = true; // 显示获取更多话题的加载动画
+      this.loading = true; // 获取更多话题过程中无限滚动不会被触发
       this.$store.commit('setPage');
       this.$axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.activeTab}`)
         .then(response => {

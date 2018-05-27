@@ -1,7 +1,7 @@
 <template>
   <transition name="pop">
     <div class="new-topic" v-show="isShowNewTopic">
-      <mt-header title="新建主题">
+      <mt-header title="新建话题">
         <mt-button icon="back" slot="left" @click="hideNewTopic"></mt-button>
       </mt-header>
       <div class="form-block">
@@ -89,7 +89,7 @@ export default {
       this.type = this.storageType;
       this.isShowTypePicker = false;
     },
-    // 发布主题
+    // 发布话题
     publishNewTopic() {
       this.$indicator.open({
         spinnerType: 'double-bounce'
@@ -123,7 +123,7 @@ export default {
     toggleTypePicker(status) {
       this.isShowTypePicker = status;
     },
-    // 隐藏新建主题界面
+    // 隐藏新建话题界面
     hideNewTopic() {
       this.$store.commit('toggleNewTopic', {isShowNewTopic: false});
     }
