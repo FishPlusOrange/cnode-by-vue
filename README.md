@@ -1,6 +1,6 @@
 # CNode by Vue
 
-基于 [Vue.js](https://cn.vuejs.org/) 和 [CNode API](http://cnodejs.org/api) 实现的 CNode 社区。
+基于 [Vue.js](https://github.com/vuejs/vue) 和 [CNode API](http://cnodejs.org/api) 实现的 CNode 社区。
 
 ## Preview 预览
 
@@ -37,7 +37,6 @@
 - **CSS3**：CSS3 新特性，如过渡动画
 - **Flex**：弹性布局，简单适配移动端和 PC 端
 - **Moment.js**：JavaScript 日期处理类库，用于对各种日期进行格式化
-- **Express**：vue-cli 搭建的项目基于 Express
 - **Webpack**：vue-cli 搭建的项目基于 Webpack，在 vue-cli 所提供的基础配置上，做了相应调整，比如 Sass 相关配置
 
 ## Get Project 获取项目
