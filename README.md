@@ -2,13 +2,13 @@
 
 基于 [Vue.js](https://github.com/vuejs/vue) 和 [CNode API](http://cnodejs.org/api) 实现的 CNode 社区。
 
-## Preview 预览
+## Preview
 
 在线预览：https://fishplusorange.github.io/cnode-by-vue/dist
 
 源代码：https://github.com/FishPlusOrange/cnode-by-vue
 
-## Functions 功能
+## Functions
 
 已实现的功能：
 
@@ -23,7 +23,7 @@
 - [x] **我的收藏**：查看所有收藏话题
 - [x] **用户信息**：查看用户基本信息，包括个人信息、最近创建的话题和最近参与的话题
 
-## Technology Stack 技术栈
+## Technology Stack
 
 项目主要用到的技术：
 
@@ -39,7 +39,7 @@
 - **Moment.js**：JavaScript 日期处理类库，用于对各种日期进行格式化
 - **Webpack**：vue-cli 搭建的项目基于 Webpack，在 vue-cli 所提供的基础配置上，做了相应调整，比如 Sass 相关配置
 
-## Get Project 获取项目
+## Get Project
 
 - **Clone with GitBash**：
 
@@ -57,7 +57,7 @@ $ git clone https://github.com/FishPlusOrange/cnode-by-vue.git
 
 4. 解压 cnode-by-vue-master.zip 文件即可
 
-## Build Setup 构建步骤
+## Build Setup
 
 ```bash
 # install dependencies
