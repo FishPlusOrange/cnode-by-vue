@@ -41,21 +41,11 @@
 
 ## Get Project
 
-- **Clone with GitBash**：
-
 ```bash
-$ git clone https://github.com/FishPlusOrange/cnode-by-vue.git
+git clone https://github.com/FishPlusOrange/cnode-by-vue.git
+
+cd cnode-by-vue
 ```
-
-- **Download with GitHub**：
-
-1. 访问项目 GitHub 主页：https://github.com/FishPlusOrange/cnode-by-vue
-
-2. 点击 `Clone or download`
-
-3. 再点击 `Download ZIP` 下载到本地
-
-4. 解压 cnode-by-vue-master.zip 文件即可
 
 ## Build Setup
 
