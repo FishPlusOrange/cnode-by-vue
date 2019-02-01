@@ -4,7 +4,7 @@
       <h3 class="title">{{ topicContent.title }}</h3>
       <div class="info-wrapper content">
         <div class="info">
-          <router-link class="user" :to="{name: 'userInfo', params: {loginname: topicContent.author && topicContent.author.loginname}}">
+          <router-link class="user" :to="{name: 'UserInfo', params: {loginname: topicContent.author && topicContent.author.loginname}}" v-if="topicContent.author && topicContent.author.loginname">
             <div class="avatar">
               <img :src="topicContent.author && topicContent.author.avatar_url">
             </div>
@@ -27,7 +27,7 @@
         <li v-for="(reply, index) of topicContent.replies" class="reply-cell">
           <div class="info-wrapper reply">
             <div class="info">
-              <router-link class="user" :to="{name: 'userInfo', params: {loginname: reply.author.loginname}}">
+              <router-link class="user" :to="{name: 'UserInfo', params: {loginname: reply.author.loginname}}" v-if="reply.author.loginname">
                 <div class="avatar">
                   <img :src="reply.author.avatar_url">
                 </div>

@@ -15,19 +15,19 @@ export default new Router({
       children: [
         {
           path: '',
-          name: 'topicList',
+          name: 'TopicList',
           component: TopicList
         },
         {
           path: 'topicContent/:id',
-          name: 'topicContent',
+          name: 'TopicContent',
           component: TopicContent
         }
       ]
     },
     {
       path: '/userInfo/:loginname',
-      name: 'userInfo',
+      name: 'UserInfo',
       component: UserInfo
     }
   ]

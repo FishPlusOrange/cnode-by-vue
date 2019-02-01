@@ -9,7 +9,7 @@
           <div class="detail">
             <div class="title-block">
               <span class="tag" :class="topic.top ? 'top' : (topic.good ? 'good' : '')">{{ (topic.top ? '置顶' : '') || (topic.good ? '精华' : '') || types[topic.tab] }}</span>
-              <router-link class="title" :to="{name: 'topicContent', params: {id: topic.id}}">{{ topic.title }}</router-link>
+              <router-link class="title" :to="{name: 'TopicContent', params: {id: topic.id}}">{{ topic.title }}</router-link>
             </div>
             <div class="info-block">
               <span class="count">{{ topic.reply_count + '/' + topic.visit_count }}</span>

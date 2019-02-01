@@ -13,7 +13,7 @@
           <ul class="cell-wrapper" v-if="msgs.hasnot_read_messages.length">
             <li class="cell" v-for="(msg, index) of msgs.hasnot_read_messages">
               <div class="info">
-                <router-link class="user" :to="{name: 'userInfo', params: {loginname: msg.author.loginname}}" @click.native="hideAll">
+                <router-link class="user" :to="{name: 'UserInfo', params: {loginname: msg.author.loginname}}" @click.native="hideAll" v-if="msg.author.loginname">
                   <div class="avatar">
                     <img :src="msg.author.avatar_url">
                   </div>
@@ -22,7 +22,7 @@
                 <div class="date">{{ msg.reply.create_at | dateFormat }}</div>
               </div>
               <div class="content" v-html="msg.reply.content"></div>
-              <div class="topic">话题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="markSingleRead(msg.id)">{{ msg.topic.title }}</router-link></div>
+              <div class="topic">话题：<router-link :to="{name: 'TopicContent', params: {id: msg.topic.id}}" @click.native="markSingleRead(msg.id)">{{ msg.topic.title }}</router-link></div>
             </li>
           </ul>
           <span class="no-data" v-show="!msgs.hasnot_read_messages.length">暂无消息</span>
@@ -31,7 +31,7 @@
           <ul class="cell-wrapper" v-show="msgs.has_read_messages.length">
             <li class="cell" v-for="(msg, index) of msgs.has_read_messages">
               <div class="info">
-                <router-link class="user" :to="{name: 'userInfo', params: {loginname: msg.author.loginname}}" @click.native="hideAll">
+                <router-link class="user" :to="{name: 'UserInfo', params: {loginname: msg.author.loginname}}" @click.native="hideAll" v-if="msg.author.loginname">
                   <div class="avatar">
                     <img :src="msg.author.avatar_url">
                   </div>
@@ -40,7 +40,7 @@
                 <div class="date">{{ msg.reply.create_at | dateFormat }}</div>
               </div>
               <div class="content" v-html="msg.reply.content"></div>
-              <div class="topic">话题：<router-link :to="{name: 'topicContent', params: {id: msg.topic.id}}" @click.native="hideAll">{{ msg.topic.title }}</router-link></div>
+              <div class="topic">话题：<router-link :to="{name: 'TopicContent', params: {id: msg.topic.id}}" @click.native="hideAll">{{ msg.topic.title }}</router-link></div>
             </li>
           </ul>
           <span class="no-data" v-if="!msgs.has_read_messages.length">暂无消息</span>

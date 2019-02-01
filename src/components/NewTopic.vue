@@ -108,7 +108,7 @@ export default {
           if(response.data && response.data.success) {
             this.toggleNewTopic({isShowNewTopic: false});
             this.toggleSideBar({isShowSideBar: false});
-            this.$router.push({name: 'topicContent', params: {id: response.data.topic_id}});
+            this.$router.push({name: 'TopicContent', params: {id: response.data.topic_id}});
           }else {
             this.$toast('发布失败，请稍后重试');
           }

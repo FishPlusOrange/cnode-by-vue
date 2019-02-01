@@ -82,7 +82,7 @@ export default {
     // 显示用户登录界面
     showUserLogin() {
       if(this.userInfo.success) { // 判断当前登录状态
-        this.$router.push({name: 'userInfo', params: {loginname: this.userInfo.loginname}}); // 若处于登录状态则显示本人用户信息
+        this.$router.push({name: 'UserInfo', params: {loginname: this.userInfo.loginname}}); // 若处于登录状态则显示本人用户信息
         this.toggleSideBar({isShowSideBar: false});
         return;
       }

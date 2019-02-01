@@ -9,7 +9,7 @@
           <li class="cell" v-for="(collection, index) of collections">
             <div class="title">
               <span class="tag">{{ types[collection.tab] }}</span>
-              <router-link class="link" :to="{name: 'topicContent', params: {id: collection.id}}" @click.native="hideAll">{{ collection.title }}</router-link>
+              <router-link class="link" :to="{name: 'TopicContent', params: {id: collection.id}}" @click.native="hideAll">{{ collection.title }}</router-link>
             </div>
             <div class="info">
               <span>{{ collection.create_at | dateFormat }}</span>

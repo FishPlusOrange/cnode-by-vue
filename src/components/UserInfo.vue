@@ -14,13 +14,13 @@
     <div class="cell topic">
       <span class="title">最近创建的话题：</span>
       <ul>
-        <li v-for="(topic, index) of userInfo.recent_topics"><router-link :to="{name: 'topicContent', params: {id: topic.id}}">{{ topic.title }}</router-link></li>
+        <li v-for="(topic, index) of userInfo.recent_topics"><router-link :to="{name: 'TopicContent', params: {id: topic.id}}">{{ topic.title }}</router-link></li>
       </ul>
     </div>
     <div class="cell reply">
       <span class="title">最近参与的话题：</span>
       <ul>
-        <li v-for="(reply, index) of userInfo.recent_replies"><router-link :to="{name: 'topicContent', params: {id: reply.id}}">{{ reply.title }}</router-link></li>
+        <li v-for="(reply, index) of userInfo.recent_replies"><router-link :to="{name: 'TopicContent', params: {id: reply.id}}">{{ reply.title }}</router-link></li>
       </ul>
     </div>
   </div>
