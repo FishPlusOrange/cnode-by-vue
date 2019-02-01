@@ -51,8 +51,9 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'msgCenter',
+  name: 'MsgCenter',
   data() {
     return {
       active: 'unread',
@@ -63,15 +64,11 @@ export default {
     }
   },
   computed: {
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    msgNum() {
-      return this.$store.state.msgNum;
-    },
-    isShowMsgCenter() {
-      return this.$store.state.isShowMsgCenter;
-    }
+    ...mapState([
+      'accessToken',
+      'msgNum',
+      'isShowMsgCenter'
+    ])
   },
   created() {
     this.getMsg();
@@ -82,6 +79,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setMsgNum',
+      'toggleMsgCenter',
+      'toggleSideBar'
+    ]),
     // 获取消息
     getMsg() {
       if(!this.accessToken) {
@@ -107,7 +109,7 @@ export default {
         .then(response => {
           if(response.data.success) {
             this.getMsg(); // 获取消息
-            this.$store.commit('setMsgNum'); // 更新未读消息数
+            this.setMsgNum(); // 更新未读消息数
           }else {
             this.$toast('单条消息标记已读失败');
           }
@@ -124,12 +126,12 @@ export default {
     },
     // 隐藏消息中心界面
     hideMegCenter() {
-      this.$store.commit('toggleMsgCenter', {isShowMsgCenter: false});
+      this.toggleMsgCenter({isShowMsgCenter: false});
     },
     // 隐藏全部
     hideAll() {
-      this.$store.commit('toggleMsgCenter', {isShowMsgCenter: false});
-      this.$store.commit('toggleSideBar', {isShowSideBar: false});
+      this.toggleMsgCenter({isShowMsgCenter: false});
+      this.toggleSideBar({isShowSideBar: false});
     }
   }
 }

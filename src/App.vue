@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <MainHeader></MainHeader>
+    <main-header/>
     <router-view/>
-    <NewTopic></NewTopic>
-    <UserLogin></UserLogin>
-    <UserCollection></UserCollection>
-    <MsgCenter></MsgCenter>
-    <SideBar></SideBar>
+    <new-Topic/>
+    <user-login/>
+    <user-collection/>
+    <msg-center/>
+    <side-bar/>
   </div>
 </template>
 

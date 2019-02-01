@@ -23,29 +23,22 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'userCollection',
+  name: 'UserCollection',
   data() {
     return {
       collections: []
     }
   },
   computed: {
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
-    types() {
-      return this.$store.state.types;
-    },
-    isShowUserCollection() {
-      return this.$store.state.isShowUserCollection;
-    },
-    isShowSideBar() {
-      return this.$store.state.isShowSideBar;
-    }
+    ...mapState([
+      'accessToken',
+      'userInfo',
+      'types',
+      'isShowUserCollection',
+      'isShowSideBar'
+    ])
   },
   created() {
     this.getUserCollection();
@@ -56,6 +49,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'toggleUserCollection',
+      'toggleSideBar'
+    ]),
     // 获取用户收藏
     getUserCollection() {
       if(!this.accessToken) { // 判断当前登录状态
@@ -74,12 +71,12 @@ export default {
     },
     // 隐藏用户收藏界面
     hideUserCollection() {
-      this.$store.commit('toggleUserCollection', {isShowUserCollection: false});
+      this.toggleUserCollection({isShowUserCollection: false});
     },
     // 全部隐藏
     hideAll() {
-      this.$store.commit('toggleUserCollection', {isShowUserCollection: false});
-      this.$store.commit('toggleSideBar', {isShowSideBar: false});
+      this.toggleUserCollection({isShowUserCollection: false});
+      this.toggleSideBar({isShowSideBar: false});
     }
   }
 }

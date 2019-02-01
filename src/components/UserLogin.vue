@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'userLogin',
   data() {
@@ -22,20 +23,21 @@ export default {
     }
   },
   computed: {
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
-    isShowUserLogin() {
-      return this.$store.state.isShowUserLogin;
-    }
+    ...mapState([
+      'accessToken',
+      'userInfo',
+      'isShowUserLogin'
+    ])
   },
   created() {
     this.loginVal = this.accessToken;
   },
   methods: {
+    ...mapMutations([
+      'updateAccessToken',
+      'updateUserInfo',
+      'toggleUserLogin'
+    ]),
     // 登录
     doLogin() {
       if(!this.loginVal) { // 非空判断
@@ -46,9 +48,9 @@ export default {
         .then(response => {
           if(response.status === 200) {
             this.$toast('登录成功');
-            this.$store.commit('updateAccessToken', {accessToken: this.loginVal});
-            this.$store.commit('updateUserInfo', {userInfo: response.data});
-            this.$store.commit('toggleUserLogin', {isShowUserLogin: false});
+            this.updateAccessToken({accessToken: this.loginVal});
+            this.updateUserInfo({userInfo: response.data});
+            this.toggleUserLogin({isShowUserLogin: false});
             // 将 accesstoken 和对应用户信息存入 localStorage
             localStorage.accessToken = this.accessToken;
             localStorage.userInfo = JSON.stringify(this.userInfo);
@@ -64,7 +66,7 @@ export default {
     },
     // 隐藏用户登录界面
     hideUserLogin() {
-      this.$store.commit('toggleUserLogin', {isShowUserLogin: false});
+      this.toggleUserLogin({isShowUserLogin: false});
     }
   }
 }

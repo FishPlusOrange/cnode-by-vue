@@ -27,8 +27,9 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'topicList',
+  name: 'TopicList',
   data() {
     return {
       isShowSpinner: false,
@@ -39,29 +40,28 @@ export default {
     this.getTopics();
   },
   computed: {
-    types() {
-      return this.$store.state.types;
-    },
-    activeTab() {
-      return this.$store.state.activeTab;
-    },
-    page() {
-      return this.$store.state.page;
-    },
-    topics() {
-      return this.$store.state.topics;
-    }
+    ...mapState([
+      'types',
+      'activeTab',
+      'page',
+      'topics'
+    ])
   },
   methods: {
+    ...mapMutations([
+      'toggleBack',
+      'setTopics',
+      'setPage'
+    ]),
     // 获取话题
     getTopics() {
       this.$indicator.open({
         spinnerType: 'double-bounce'
       });
-      this.$store.commit('toggleBack', {isShowBack: false}); // 隐藏返回按钮
+      this.toggleBack({isShowBack: false}); // 隐藏返回按钮
       this.$axios.get(`https://cnodejs.org/api/v1/topics?tab=${this.activeTab}`)
         .then(response => {
-          this.$store.commit('getTopics', {topics: response.data.data});
+          this.setTopics({topics: response.data.data});
           this.$indicator.close();
         })
         .catch(error => {
@@ -77,12 +77,12 @@ export default {
     getMoreTopics() {
       this.isShowSpinner = true; // 显示获取更多话题的加载动画
       this.loading = true; // 获取更多话题过程中无限滚动不会被触发
-      this.$store.commit('setPage');
+      this.setPage();
       this.$axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.activeTab}`)
         .then(response => {
           this.loading = false;
           this.isShowSpinner = false;
-          this.$store.commit('getTopics', {topics: this.topics.concat(response.data.data)});
+          this.setTopics({topics: this.topics.concat(response.data.data)});
         })
         .catch(error => {
           this.loading = false;

@@ -35,8 +35,9 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'newTopic',
+  name: 'NewTopic',
   data() {
     return {
       type: {
@@ -72,14 +73,16 @@ export default {
     }
   },
   computed: {
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    isShowNewTopic() {
-      return this.$store.state.isShowNewTopic;
-    }
+    ...mapState([
+      'accessToken',
+      'isShowNewTopic'
+    ])
   },
   methods: {
+    ...mapMutations([
+      'toggleNewTopic',
+      'toggleSideBar'
+    ]),
     // 切换类别
     changeType(picker, values) {
       this.storageType = values[0];
@@ -103,8 +106,8 @@ export default {
         .then(response => {
           this.$indicator.close();
           if(response.data && response.data.success) {
-            this.$store.commit('toggleNewTopic', {isShowNewTopic: false});
-            this.$store.commit('toggleSideBar', {isShowSideBar: false});
+            this.toggleNewTopic({isShowNewTopic: false});
+            this.toggleSideBar({isShowSideBar: false});
             this.$router.push({name: 'topicContent', params: {id: response.data.topic_id}});
           }else {
             this.$toast('发布失败，请稍后重试');
@@ -125,7 +128,7 @@ export default {
     },
     // 隐藏新建话题界面
     hideNewTopic() {
-      this.$store.commit('toggleNewTopic', {isShowNewTopic: false});
+      this.toggleNewTopic({isShowNewTopic: false});
     }
   }
 }

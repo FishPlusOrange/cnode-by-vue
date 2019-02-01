@@ -64,8 +64,9 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'topicContent',
+  name: 'TopicContent',
   data() {
     return {
       id: this.$route.params.id,
@@ -88,20 +89,20 @@ export default {
     this.getTopicContent();
   },
   computed: {
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
-    types() {
-      return this.$store.state.types;
-    }
+    ...mapState([
+      'accessToken',
+      'userInfo',
+      'types'
+    ])
   },
   methods: {
+    ...mapMutations([
+      'toggleBack',
+      'toggleUserLogin'
+    ]),
     // 获取话题内容
     getTopicContent() {
-      this.$store.commit('toggleBack', {isShowBack: true}); // 显示返回按钮
+      this.toggleBack({isShowBack: true}); // 显示返回按钮
       this.$indicator.open({
         spinnerType: 'double-bounce'
       });
@@ -122,7 +123,7 @@ export default {
     // 收藏或取消收藏
     toggleCollect() {
       if(!this.accessToken) { // 判断登录状态
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
       let _urlStr, _successMsg, _errorMsg;
@@ -155,7 +156,7 @@ export default {
     // 点赞或取消点赞
     toggleUp(reply) {
       if(!this.accessToken) { // 判断登录状态
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
       if(reply.author.loginname === this.userInfo.loginname) { // 判断点赞目标
@@ -208,7 +209,7 @@ export default {
     // 评论或回复
     commentOrReply(reply) {
       if(!this.accessToken) { // 判断登录状态
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
       let _content, _id, _successMsg;

@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <TopicTab></TopicTab>
+    <topic-tab/>
     <router-view/>
   </div>
 </template>
@@ -8,10 +8,7 @@
 <script>
 import TopicTab from './TopicTab'
 export default {
-  name: 'mainContent',
-  data() {
-    return {}
-  },
+  name: 'MainContent',
   components: {
     TopicTab
   }

@@ -6,20 +6,21 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'mainHeader',
-  data() {
-    return {}
-  },
+  name: 'MainHeader',
   computed: {
-    isShowBack() {
-      return this.$store.state.isShowBack;
-    }
+    ...mapState([
+      'isShowBack'
+    ])
   },
   methods: {
+    ...mapMutations([
+      'toggleSideBar'
+    ]),
     // 显示左侧操作面板
     showSideBar() {
-      this.$store.commit('toggleSideBar', {isShowSideBar: true});
+      this.toggleSideBar({isShowSideBar: true});
     }
   }
 }

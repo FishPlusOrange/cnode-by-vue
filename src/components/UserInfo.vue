@@ -27,8 +27,9 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
-  name: 'userInfo',
+  name: 'UserInfo',
   data() {
     return {
       loginname: this.$route.params.loginname,
@@ -44,9 +45,12 @@ export default {
     this.getUserInfo();
   },
   methods: {
+    ...mapMutations([
+      'toggleBack'
+    ]),
     // 获取用户信息
     getUserInfo() {
-      this.$store.commit('toggleBack', {isShowBack: true}); // 显示返回按钮
+      this.toggleBack({isShowBack: true}); // 显示返回按钮
       this.$indicator.open({
         spinnerType: 'double-bounce'
       });

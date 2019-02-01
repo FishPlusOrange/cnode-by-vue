@@ -34,10 +34,10 @@ export default new Vuex.Store({
     updateUserInfo(state, payload) {
       state.userInfo = payload.userInfo;
     },
-    getTopics(state, payload) {
+    setTopics(state, payload) {
       state.topics = payload.topics;
     },
-    switchTab(state, payload) {
+    setTab(state, payload) {
       state.activeTab = payload.activeTab;
       state.page = payload.page;
       state.topics = payload.topics;

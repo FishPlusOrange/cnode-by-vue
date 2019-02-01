@@ -30,26 +30,18 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'sideBar',
-  data() {
-    return {}
-  },
+  name: 'SideBar',
   computed: {
+    ...mapState([
+      'accessToken',
+      'userInfo',
+      'msgNum',
+      'isShowSideBar'
+    ]),
     realMsgNum() {
       return this.msgNum <= 99 ? this.msgNum : '99+';
-    },
-    accessToken() {
-      return this.$store.state.accessToken;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
-    msgNum() {
-      return this.$store.state.msgNum;
-    },
-    isShowSideBar() {
-      return this.$store.state.isShowSideBar;
     }
   },
   created() {
@@ -61,14 +53,24 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setMsgNum',
+      'toggleSideBar',
+      'toggleUserLogin',
+      'toggleNewTopic',
+      'toggleUserCollection',
+      'toggleMsgCenter',
+      'updateAccessToken',
+      'updateUserInfo'
+    ]),
     // 获取未读消息数
     getMsgNum() {
       if(!this.accessToken) { // 判断登录状态
-        this.$store.commit('setMsgNum', {msgNum: 0});
+        this.setMsgNum({msgNum: 0});
         return;
       }
       this.$axios.get(`https://cnodejs.org/api/v1/message/count?accesstoken=${this.accessToken}`)
-        .then(reponse => this.$store.commit('setMsgNum', {msgNum: reponse.data.data}))
+        .then(reponse => this.setMsgNum({msgNum: reponse.data.data}))
         .catch(error => {
           if(error.response) {
             this.$toast(error.response.data.error_msg);
@@ -81,41 +83,41 @@ export default {
     showUserLogin() {
       if(this.userInfo.success) { // 判断当前登录状态
         this.$router.push({name: 'userInfo', params: {loginname: this.userInfo.loginname}}); // 若处于登录状态则显示本人用户信息
-        this.$store.commit('toggleSideBar', {isShowSideBar: false});
+        this.toggleSideBar({isShowSideBar: false});
         return;
       }
-      this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+      this.toggleUserLogin({isShowUserLogin: true});
     },
     // 显示新建话题界面
     showNewTopic() {
       if(!this.accessToken) {
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
-      this.$store.commit('toggleNewTopic', {isShowNewTopic: true});
+      this.toggleNewTopic({isShowNewTopic: true});
     },
     // 显示用户收藏界面
     showUserCollection() {
       if(!this.accessToken) {
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
-      this.$store.commit('toggleUserCollection', {isShowUserCollection: true});
+      this.toggleUserCollection({isShowUserCollection: true});
     },
     // 显示消息中心界面
     showMsgCenter() {
       if(!this.accessToken) {
-        this.$store.commit('toggleUserLogin', {isShowUserLogin: true});
+        this.toggleUserLogin({isShowUserLogin: true});
         return;
       }
-      this.$store.commit('toggleMsgCenter', {isShowMsgCenter: true});
+      this.toggleMsgCenter({isShowMsgCenter: true});
     },
     // 退出登录
     doLogout() {
       this.$messagebox.confirm('确定退出登录吗?', '').then(action => {
-        this.$store.commit('updateAccessToken', {accessToken: ''});
-        this.$store.commit('updateUserInfo', {userInfo: ''});
-        this.$store.commit('toggleSideBar', {isShowSideBar: false});
+        this.updateAccessToken({accessToken: ''});
+        this.updateUserInfo({userInfo: ''});
+        this.toggleSideBar({isShowSideBar: false});
         // 清除 localStorage 中 accesstoken 和对应用户信息
         localStorage.removeItem('accessToken');
         localStorage.removeItem('userInfo');
@@ -123,7 +125,7 @@ export default {
     },
     // 隐藏左侧操作面板
     hideSideBar() {
-      this.$store.commit('toggleSideBar', {isShowSideBar: false});
+      this.toggleSideBar({isShowSideBar: false});
     }
   }
 }

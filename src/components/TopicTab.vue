@@ -7,30 +7,30 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'topicTab',
-  data() {
-    return {}
-  },
+  name: 'TopicTab',
   computed: {
-    types() {
-      return this.$store.state.types;
-    },
-    activeTab() {
-      return this.$store.state.activeTab;
-    }
+    ...mapState([
+      'types',
+      'activeTab'
+    ])
   },
   methods: {
+    ...mapMutations([
+      'setTab',
+      'setTopics'
+    ]),
     // 切换标签页
     switchTab(type, page = 1) {
       this.$indicator.open({
         spinnerType: 'double-bounce'
       });
-      this.$store.commit('switchTab', {activeTab: type, page: 1, topics: []});
+      this.setTab({activeTab: type, page: 1, topics: []});
       this.$axios.get(`https://cnodejs.org/api/v1/topics?page=${page}&tab=${this.activeTab}`)
         .then(response => {
           this.$indicator.close();
-          this.$store.commit('getTopics', {topics: response.data.data});
+          this.setTopics({topics: response.data.data});
         })
         .catch(error => {
           this.$indicator.close();
