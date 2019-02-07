@@ -2,11 +2,25 @@
   "name": "cnode-by-vue",
   "version": "1.0.0",
   "description": "A Vue project based on CNode API",
-  "author": "FishPlusOrange",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "node build/build.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FishPlusOrange/cnode-by-vue.git"
+  },
+  "keywords": [
+    "vue",
+    "cnode",
+    "mint-ui"
+  ],
+  "author": "FishPlusOrange",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FishPlusOrange/cnode-by-vue/issues"
+  },
+  "homepage": "https://github.com/FishPlusOrange/cnode-by-vue#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "mint-ui": "^2.2.13",
