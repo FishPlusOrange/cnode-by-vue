@@ -107,12 +107,10 @@ export default {
       if(this.$refs.topicList.scrollTop <= 0) {
         return;
       }
-      let timer = setInterval(() => {
-        if(this.$refs.topicList.scrollTop <= 0) {
-          clearInterval(timer);
-        }
+      requestAnimationFrame(() => {
         this.$refs.topicList.scrollTop -= 300;
-      }, 3);
+        this.goTop();
+      })
     }
   }
 }
