@@ -6,10 +6,6 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "node build/build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FishPlusOrange/cnode-by-vue.git"
-  },
   "keywords": [
     "vue",
     "cnode",
@@ -17,10 +13,6 @@
   ],
   "author": "FishPlusOrange",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FishPlusOrange/cnode-by-vue/issues"
-  },
-  "homepage": "https://github.com/FishPlusOrange/cnode-by-vue#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "mint-ui": "^2.2.13",
@@ -77,5 +69,13 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "homepage": "https://github.com/FishPlusOrange/cnode-by-vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FishPlusOrange/cnode-by-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FishPlusOrange/cnode-by-vue/issues"
+  }
 }
