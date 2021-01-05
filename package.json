@@ -14,7 +14,7 @@
   "author": "FishPlusOrange",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "mint-ui": "^2.2.13",
     "moment": "^2.22.1",
     "vue": "^2.5.2",
